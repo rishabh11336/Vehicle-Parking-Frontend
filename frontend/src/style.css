@@ -1,0 +1,27 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+
+/* My css code */
+
+/* Custom primary button styling */
+.btn-primary-custom {
+  background-color: #11547a;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary-custom:hover {
+  background-color: #0e4564; /* Darker on hover */
+  color: white;
+}
