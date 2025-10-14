@@ -169,6 +169,7 @@
 import Navbar from '../components/Navbar.vue';
 import Footer from '../components/Footer.vue';
 import axios from 'axios';
+import { API_BASE_URL } from '../config';
 
 export default {
   name: 'UserDashboard',
@@ -217,7 +218,7 @@ export default {
         }
 
         // Fetch user profile
-        const profileResponse = await axios.get('http://127.0.0.1:5000/user_profile', {
+        const profileResponse = await axios.get(`${API_BASE_URL}/user_profile`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         this.user = { ...profileResponse.data };
@@ -230,7 +231,7 @@ export default {
         }
 
         // Fetch all user bookings
-        const bookingsResponse = await axios.get('http://127.0.0.1:5000/user_bookings', {
+        const bookingsResponse = await axios.get(`${API_BASE_URL}/user_bookings`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
 
@@ -277,7 +278,7 @@ export default {
         // If you plan to upload image with this request, you'd need FormData and a different backend endpoint
         // For now, only text fields are being updated here.
 
-        await axios.patch('http://127.0.0.1:5000/edit_user_profile', dataToUpdate, {
+        await axios.patch(`${API_BASE_URL}/edit_user_profile`, dataToUpdate, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
 

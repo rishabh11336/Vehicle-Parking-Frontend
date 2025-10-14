@@ -36,6 +36,7 @@
 <script>
 // Make sure you have axios installed: npm install axios
 import axios from 'axios';
+import { API_BASE_URL } from '../config';
 
 export default {
   name: 'LoginPage',
@@ -64,7 +65,7 @@ export default {
         // --- Viva Explanation Point 2: Making the POST Request ---
         // We use axios.post to send the user's email and password
         // to the backend login endpoint.
-        const response = await axios.post('http://127.0.0.1:5000/login', this.form);
+  const response = await axios.post(`${API_BASE_URL}/login`, this.form);
 
         // --- Viva Explanation Point 3: Handling a Successful Response ---
         // If the login is successful (status code 200), the backend sends

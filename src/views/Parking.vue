@@ -82,6 +82,7 @@ import Navbar from '../components/Navbar.vue';
 import Footer from '../components/Footer.vue';
 // Import axios to make API calls
 import axios from 'axios';
+import { API_BASE_URL } from '../config';
 
 export default {
   name: 'ParkingLotsPage',
@@ -121,8 +122,8 @@ export default {
       try {
         // Get the auth token from localStorage
         const token = localStorage.getItem('authToken');
-        // We use axios.get to send a GET request to the /parking_lots endpoint with Authorization header.
-        const response = await axios.get('http://127.0.0.1:5000/parking_lots', {
+    // We use axios.get to send a GET request to the /parking_lots endpoint with Authorization header.
+    const response = await axios.get(`${API_BASE_URL}/parking_lots`, {
           headers: token ? { 'Authorization': `Bearer ${token}` } : {}
         });
         // If the request is successful, we store the data from the response

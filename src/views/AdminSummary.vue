@@ -66,6 +66,7 @@
 import Navbar from '../components/Navbar.vue';
 import Footer from '../components/Footer.vue';
 import Chart from 'chart.js/auto'; // Import Chart.js for data visualization
+import { API_BASE_URL } from '../config';
 
 export default {
   name: 'AdminSummaryPage',
@@ -127,8 +128,8 @@ export default {
           return; // Exit the function early
         }
 
-        // Make an API call to the /admin/stats endpoint
-        const response = await fetch('http://127.0.0.1:5000/admin/stats', {
+  // Make an API call to the /admin/stats endpoint
+  const response = await fetch(`${API_BASE_URL}/admin/stats`, {
           method: 'GET', // HTTP GET request
           headers: {
             'Content-Type': 'application/json', // Specify content type

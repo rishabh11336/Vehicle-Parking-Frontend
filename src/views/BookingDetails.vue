@@ -110,6 +110,7 @@
 import Navbar from '../components/Navbar.vue';
 import Footer from '../components/Footer.vue';
 import axios from 'axios';
+import { API_BASE_URL } from '../config';
 
 export default {
   name: 'BookingDetailsPage',
@@ -203,7 +204,7 @@ export default {
           return;
         }
 
-        const response = await axios.get(`http://127.0.0.1:5000/user/booking-details/${id}`, {
+  const response = await axios.get(`${API_BASE_URL}/user/booking-details/${id}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -296,7 +297,7 @@ export default {
               alert("You can only cancel 'Active' bookings.");
             } else {
               if (confirm("Are you sure you want to cancel this booking? This action cannot be undone.")) {
-                const response = await axios.patch(`http://127.0.0.1:5000/cancel_booking/${bookingId}`, {}, {
+                const response = await axios.patch(`${API_BASE_URL}/cancel_booking/${bookingId}`, {}, {
                   headers: { 'Authorization': `Bearer ${token}` }
                 });
                 if (response.status === 200) {
@@ -317,7 +318,7 @@ export default {
               alert("You can only check in vehicles for 'Active' bookings.");
             } else {
               if (confirm("Are you sure you want to check-in this vehicle?")) {
-                const response = await axios.post(`http://127.0.0.1:5000/user/check_in/${bookingId}`, {}, {
+                const response = await axios.post(`${API_BASE_URL}/user/check_in/${bookingId}`, {}, {
                   headers: { 'Authorization': `Bearer ${token}` }
                 });
                 if (response.status === 200) {
@@ -340,7 +341,7 @@ export default {
             if (confirm("Are you sure you want to check-out this vehicle and finalize payment?")) {
               try {
                 console.log(`[Frontend Log] Attempting to call check_out API for booking ID: ${bookingId}`);
-                const checkoutResponse = await axios.post(`http://127.0.0.1:5000/user/check_out/${bookingId}`, {}, {
+                const checkoutResponse = await axios.post(`${API_BASE_URL}/user/check_out/${bookingId}`, {}, {
                   headers: { 'Authorization': `Bearer ${token}` }
                 });
 
@@ -354,7 +355,7 @@ export default {
                   }
                   
                   console.log(`[Frontend Log] Attempting to fetch final cost from _cost API for booking ID: ${bookingId}`);
-                  const costResponse = await axios.get(`http://127.0.0.1:5000/user/_cost/${bookingId}`, {
+                  const costResponse = await axios.get(`${API_BASE_URL}/user/_cost/${bookingId}`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                   });
 

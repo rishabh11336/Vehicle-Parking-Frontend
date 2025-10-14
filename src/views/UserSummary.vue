@@ -69,6 +69,7 @@
 import Navbar from '../components/Navbar.vue';
 import Footer from '../components/Footer.vue';
 import Chart from 'chart.js/auto';
+import { API_BASE_URL } from '../config';
 
 export default {
   name: 'UserReportsPage',
@@ -129,8 +130,8 @@ export default {
       }
 
       try {
-        console.log('Token found. Attempting to fetch from http://127.0.0.1:5000/user_summary');
-        const response = await fetch('http://127.0.0.1:5000/user_summary', {
+  console.log(`Token found. Attempting to fetch from ${API_BASE_URL}/user_summary`);
+  const response = await fetch(`${API_BASE_URL}/user_summary`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }

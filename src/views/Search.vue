@@ -88,6 +88,7 @@
 import Navbar from '../components/Navbar.vue';
 import Footer from '../components/Footer.vue';
 import axios from 'axios'; // Import axios
+import { API_BASE_URL } from '../config';
 
 export default {
   name: 'SearchPage',
@@ -148,7 +149,7 @@ export default {
       }
 
       try {
-        const response = await axios.get('http://127.0.0.1:5000/parking_lots', {
+        const response = await axios.get(`${API_BASE_URL}/parking_lots`, {
           headers: {
             'Authorization': `Bearer ${authToken}` // Use the retrieved token
           }

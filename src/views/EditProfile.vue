@@ -32,6 +32,7 @@
 
 <script>
 import axios from "axios";
+import { API_BASE_URL } from '../config';
 
 export default {
   name: "EditProfile",
@@ -59,7 +60,7 @@ export default {
       }
 
       try {
-        const res = await axios.put("http://localhost:5000/user/profile", formData);
+        const res = await axios.put(`${API_BASE_URL}/user/profile`, formData);
         alert(res.data.message || "Profile updated successfully");
         this.$router.push("/user/dashboard");
       } catch (err) {

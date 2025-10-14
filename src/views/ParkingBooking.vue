@@ -110,6 +110,7 @@ import Navbar from '../components/Navbar.vue';
 import Footer from '../components/Footer.vue';
 import axios from 'axios';
 import { Modal } from 'bootstrap';
+import { API_BASE_URL } from '../config';
 
 export default {
   name: 'BookingPage',
@@ -259,7 +260,7 @@ export default {
         this.isLoading = true;
         try {
             const token = localStorage.getItem('authToken');
-            const response = await axios.get('http://127.0.0.1:5000/parking_lots', {
+            const response = await axios.get(`${API_BASE_URL}/parking_lots`, {
               headers: token ? { 'Authorization': `Bearer ${token}` } : {}
             });
             const lot = response.data.find(l => l.id === parseInt(lotId));
@@ -330,7 +331,7 @@ export default {
           // start_time and end_time remain empty for permanent bookings (24/7)
         }
 
-        const apiUrl = `http://127.0.0.1:5000/book_slot/${this.selectedLot.id}`;
+  const apiUrl = `${API_BASE_URL}/book_slot/${this.selectedLot.id}`;
         const response = await axios.post(apiUrl, payload, {
             headers: {
                 'Authorization': `Bearer ${token}`

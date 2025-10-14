@@ -63,6 +63,7 @@
 import Navbar from '../components/Navbar.vue';
 import Footer from '../components/Footer.vue';
 import axios from 'axios';
+import { API_BASE_URL } from '../config';
 
 export default {
   name: 'ViewUsersPage',
@@ -88,7 +89,7 @@ export default {
           return;
         }
 
-        const response = await axios.get('http://127.0.0.1:5000/admin/users', {
+  const response = await axios.get(`${API_BASE_URL}/admin/users`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         

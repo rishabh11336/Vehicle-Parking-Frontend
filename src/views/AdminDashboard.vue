@@ -107,6 +107,7 @@
 import Navbar from '../components/Navbar.vue';
 import Footer from '../components/Footer.vue';
 import axios from 'axios';
+import { API_BASE_URL } from '../config';
 
 export default {
   name: 'AdminDashboard',
@@ -145,7 +146,7 @@ export default {
           return;
         }
 
-        const response = await axios.get('http://127.0.0.1:5000/parking_lots', {
+  const response = await axios.get(`${API_BASE_URL}/parking_lots`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         
@@ -169,7 +170,7 @@ export default {
           return;
         }
 
-        const response = await axios.get('http://127.0.0.1:5000/admin/count_users', {
+  const response = await axios.get(`${API_BASE_URL}/admin/count_users`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         
@@ -212,7 +213,7 @@ export default {
       try {
         const token = localStorage.getItem('authToken');
         // We send a DELETE request to the specific endpoint for the lot.
-        await axios.delete(`http://127.0.0.1:5000/admin/delete_lots/${lotId}`, {
+  await axios.delete(`${API_BASE_URL}/admin/delete_lots/${lotId}`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
 

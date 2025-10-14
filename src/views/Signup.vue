@@ -87,6 +87,7 @@
 import Navbar from '../components/Navbar.vue';
 import axios from 'axios';
 import { Modal } from 'bootstrap';
+import { API_BASE_URL } from '../config';
 
 export default {
   name: "RegisterPage",
@@ -131,7 +132,7 @@ export default {
           role: "user"
         };
 
-        const response = await axios.post("http://127.0.0.1:5000/register", payload);
+  const response = await axios.post(`${API_BASE_URL}/register`, payload);
 
         if (response.status === 201) {
             console.log("Registration successful:", response.data.message);
